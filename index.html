@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ComunidadFX | Convierte tu celular en ingresos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#070b16;--bg2:#0b1020;--card:#0e1427;--text:#eaf2ff;--muted:#9aacc8;--border:rgba(255,255,255,.12);--accent:#1ea8ff;--accent2:#6a5cff;--shadow:0 20px 60px rgba(10,14,25,.35), inset 0 1px 0 rgba(255,255,255,.06)}
+    *{box-sizing:border-box}
+    body{margin:0;background:radial-gradient(1200px 700px at 10% -10%, #1a2f60 0%, transparent 60%),radial-gradient(900px 500px at 110% -20%, #0a2044 0%, transparent 60%),linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);font-family:'Montserrat','Inter',sans-serif;line-height:1.55}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%;height:auto;border-radius:12px}
+    iframe{width:100%;border:none;border-radius:16px;box-shadow:0 6px 20px rgba(0,0,0,0.5)}
+    .container{max-width:1200px;margin:auto;padding:24px}
+    h1,h2,h3{text-align:center;margin:0 0 12px}
+    .hero{padding:86px 20px 48px;position:relative;text-align:center;overflow:hidden}
+    .hero:before{content:"";position:absolute;inset:-20% -10% auto auto;filter:blur(70px);opacity:.6;background:radial-gradient(420px 220px at 60% 20%, rgba(30,168,255,.5), transparent 60%),radial-gradient(380px 220px at 80% 0%, rgba(106,92,255,.5), transparent 60%)}
+    .hero h1{font-size:clamp(1.8rem,4.5vw,3.1rem);letter-spacing:.2px}
+    .hero h1 span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{color:var(--muted);margin:0 auto 14px;max-width:720px;font-size:1.1rem}
+    .cta-btn{display:inline-block;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#03101c;padding:14px 28px;border-radius:14px;font-weight:700;text-decoration:none;margin-top:20px;box-shadow:var(--shadow);transition:transform .2s}
+    .cta-btn:hover{transform:translateY(-2px)}
+    .section{margin:60px 0}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.03));padding:24px;border-radius:16px;margin:20px 0;border:1px solid var(--border);box-shadow:var(--shadow)}
+    .card:hover{transform:translateY(-2px);transition:.2s ease}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+    ul{list-style:none;padding:0;margin:0}
+    ul li{margin:8px 0;padding-left:1.2em;position:relative}
+    ul li::before{content:"⚡";position:absolute;left:0;color:var(--accent2)}
+    .pricing{text-align:center;background:var(--card);border-radius:16px;padding:30px;margin:20px 0;border:1px solid var(--border)}
+    .pricing strong{font-size:1.8rem;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:20px}
+    .testimonial img{box-shadow:0 6px 16px rgba(0,0,0,0.4)}
+    .whatsapp{background:#25D366;color:#04210f;display:inline-block;padding:14px 26px;border-radius:50px;font-weight:700;text-decoration:none;box-shadow:0 8px 20px rgba(37,211,102,0.3)}
+    .whatsapp:hover{filter:brightness(1.1)}
+    .cta-bar{position:fixed;left:0;right:0;bottom:14px;display:flex;justify-content:center;z-index:999}
+    .cta-inner{display:flex;gap:12px;align-items:center;padding:12px 16px;border-radius:16px;background:linear-gradient(135deg,rgba(30,168,255,.25),rgba(106,92,255,.25));backdrop-filter:blur(8px);border:1px solid var(--border);box-shadow:var(--shadow)}
+    .cta-inner a{padding:12px 18px;border-radius:12px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center}
+    .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--text)}
+    [data-animate]{opacity:0;transform:translateY(16px);animation:fadeUp .6s ease forwards}
+    [data-animate="2"]{animation-delay:.1s}
+    [data-animate="3"]{animation-delay:.2s}
+    @keyframes fadeUp{to{opacity:1;transform:none}}
+    @media(max-width:768px){.two-col{grid-template-columns:1fr}}
+
+    /* Carousel */
+    .carousel{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);background:#050b16}
+    .carousel .track{display:flex;transition:transform .6s ease}
+    .carousel .slide{min-width:100%;aspect-ratio:3/2;display:grid;place-items:center}
+    .carousel img{width:100%;height:100%;object-fit:cover;border-radius:0}
+    .carousel .dots{position:absolute;bottom:10px;left:0;right:0;display:flex;gap:6px;justify-content:center}
+    .carousel .dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.35)}
+    .carousel .dot.active{background:#fff}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero" data-animate>
+      <h1>CONVIERTE TU CELULAR EN <span>UNA MÁQUINA DE GENERAR INGRESOS</span></h1>
+      <p>Trading sencillo, sin mensualidades, sin presión ni complicaciones</p>
+      <a href="#contacto" class="cta-btn">CÓMO SER PARTE DE LA COMUNIDAD</a>
+    </section>
+
+    <section class="section two-col" data-animate>
+      <div class="card">
+        <h3>Acerca de mí</h3>
+        <p>Pasé de ser un empleado que ganaba $300 USD al mes a ganar más de $10,000 USD mensuales. Llevo más de 8 años en negocios online y trading, y ahora ayudo a otros a construir sus propios resultados.</p>
+        <a href="https://instagram.com/nathan.axelrod1" target="_blank" class="cta-btn">Sígueme en Instagram</a>
+      </div>
+      <div class="carousel" id="aboutCarousel">
+        <div class="track">
+          <div class="slide"><img src="/mnt/data/Imagen de WhatsApp 2025-09-09 a las 11.08.31_1507c1f7.jpg" alt="Roma"/></div>
+          <div class="slide"><img src="/mnt/data/Imagen de WhatsApp 2025-09-09 a las 11.08.31_a07b1e74.jpg" alt="Escenario"/></div>
+          <div class="slide"><img src="/mnt/data/Imagen de WhatsApp 2025-09-09 a las 11.08.31_f3d4f811.jpg" alt="París"/></div>
+          <div class="slide"><img src="/mnt/data/Imagen de WhatsApp 2025-09-09 a las 11.08.30_9f8f6343.jpg" alt="Sagrada Familia"/></div>
+        </div>
+        <div class="dots"></div>
+      </div>
+    </section>
+
+    <section class="section" data-animate>
+      <h2>¿Te ha pasado esto?</h2>
+      <ul>
+        <li>Trabajas duro... pero el dinero nunca alcanza.</li>
+        <li>Intentaste trading y parecía demasiado complicado.</li>
+        <li>Pagaste mensualidades en academias y aún así no lograste ganar.</li>
+      </ul>
+      <p style="text-align:center"><strong>No es tu culpa.</strong> El sistema está hecho para que pagues, no para que ganes.</p>
+    </section>
+
+    <section class="section" data-animate>
+      <h2>Por eso creé COMUNIDAD FX IDEAS</h2>
+      <p style="text-align:center;color:var(--muted)">Donde no necesitas experiencia ni pagar mensualidades, sólo tu celular para que puedas ganar.</p>
+      <iframe height="360" src="https://www.youtube.com/embed/dRoX8zMn-64?rel=0&modestbranding=1" title="Video de Comunidad FX" allowfullscreen loading="lazy"></iframe>
+    </section>
+
+    <section class="section two-col" data-animate>
+      <div class="card">
+        <h3>Lo que incluye</h3>
+        <ul>
+          <li>Canal de ideas de inversión: copia señales en tus tiempos libres y comienza a ganar.</li>
+          <li>Sistema automático: diseñado para personas con poco tiempo, opera por ti (12 a 20% anual).</li>
+        </ul>
+      </div>
+      <div class="pricing">
+        <p style="color:var(--muted)">PRECIO NORMAL: $150 USD</p>
+        <p>HOY, PRECIO ESPECIAL:<br><strong>$75 USD</strong></p>
+        <ul>
+          <li>Sin mensualidades</li>
+          <li>Acceso inmediato</li>
+          <li>Comienza a ganar desde hoy</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" data-animate>
+      <h2>TESTIMONIOS DE SOCIOS</h2>
+      <div class="carousel" id="testiCarousel">
+        <div class="track">
+          <div class="slide"><img src="/mnt/data/Imagen de WhatsApp 2025-09-09 a las 11.26.02_bdf9b4b5.jpg" alt="Testimonio 1"></div>
+          <div class="slide"><img src="/mnt/data/Imagen de WhatsApp 2025-09-09 a las 11.23.28_b0b50c53.jpg" alt="Testimonio 2"></div>
+          <div class="slide"><img src="/mnt/data/Imagen de WhatsApp 2025-09-09 a las 11.23.22_db2823d3.jpg" alt="Testimonio 3"></div>
+        </div>
+        <div class="dots"></div>
+      </div>
+    </section>
+
+    <section class="section" id="contacto" data-animate>
+      <h2>Este es tu momento de iniciar</h2>
+      <p style="text-align:center;color:var(--muted)">Si buscas generar ingresos de forma sencilla o automática sin pagar mensualidades, da clic y envía un mensaje por WhatsApp.</p>
+      <div style="text-align:center"><a class="whatsapp" href="https://wa.me/5214793486266?text=Quiero%20unirme%20a%20la%20ComunidadFX" target="_blank">Enviar WhatsApp</a></div>
+    </section>
+
+    <section class="section" id="open-account" data-animate>
+      <h2>Abre tu cuenta en vivo</h2>
+      <iframe src="https://www.startrader.com/es/live-account/?affid=7454685" height="900" loading="lazy" title="Abrir cuenta en Startrader"></iframe>
+    </section>
+  </div>
+
+  <!-- Sticky CTA -->
+  <div class="cta-bar" aria-live="polite">
+    <div class="cta-inner">
+      <a class="whatsapp" href="https://wa.me/5214793486266?text=Quiero%20unirme%20a%20la%20ComunidadFX" target="_blank">WhatsApp</a>
+      <a class="cta-btn" href="#open-account">Abrir cuenta ahora</a>
+    </div>
+  </div>
+
+  <!-- Modal Promoción $75 -->
+  <dialog id="promoModal" style="border:none;border-radius:16px;padding:0;background:transparent;">
+    <div class="card" style="width:min(720px,92vw)">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+        <div>
+          <span style="display:inline-block;padding:.35rem .7rem;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--border);font-size:.9rem">Promoción activa</span>
+          <h3 style="margin:8px 0 6px">Acceso único por <span style="background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent">$75 USD</span></h3>
+          <p class="muted" style="margin:0;color:var(--muted)">Sin mensualidades • Acceso inmediato • Soporte</p>
+        </div>
+        <button id="closeModal" class="cta-btn" style="background:transparent;color:var(--text);border:1px solid var(--border)">Cerrar</button>
+      </div>
+      <div style="height:12px"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="cta-btn" href="#contacto">Unirme ahora</a>
+        <a class="btn-ghost" href="#open-account" style="padding:12px 18px;border-radius:12px;text-decoration:none;display:inline-flex;align-items:center">Abrir cuenta</a>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    // Simple carousels (auto)
+    function makeCarousel(rootId, interval=3500){
+      const root = document.getElementById(rootId);
+      if(!root) return;
+      const track = root.querySelector('.track');
+      const slides = Array.from(root.querySelectorAll('.slide'));
+      const dotsC = root.querySelector('.dots');
+      let i=0; let timer;
+      slides.forEach((_,idx)=>{ const d=document.createElement('div'); d.className='dot'+(idx===0?' active':''); dotsC.appendChild(d); d.addEventListener('click',()=>{i=idx;update();reset();});});
+      function update(){
+        track.style.transform = `translateX(${-i*100}%)`;
+        dotsC.querySelectorAll('.dot').forEach((d,idx)=> d.classList.toggle('active', idx===i));
+      }
+      function next(){ i=(i+1)%slides.length; update(); }
+      function reset(){ clearInterval(timer); timer=setInterval(next, interval); }
+      reset();
+      root.addEventListener('mouseenter', ()=>clearInterval(timer));
+      root.addEventListener('mouseleave', reset);
+      window.addEventListener('resize', update);
+    }
+    makeCarousel('aboutCarousel', 3200);
+    makeCarousel('testiCarousel', 3600);
+
+    // Promo modal: una vez por sesión (al 60% de scroll o a los 10s, lo que ocurra primero)
+    const MODAL_KEY = 'promo75_seen_v1';
+    const modal = document.getElementById('promoModal');
+    const closeBtn = document.getElementById('closeModal');
+    function openModal(){ if(!sessionStorage.getItem(MODAL_KEY)){ modal.showModal(); sessionStorage.setItem(MODAL_KEY,'1'); } }
+    closeBtn?.addEventListener('click', ()=> modal.close());
+    setTimeout(openModal, 10000);
+    window.addEventListener('scroll', ()=>{ const h=document.documentElement; const p=(h.scrollTop)/(h.scrollHeight-h.clientHeight); if(p>0.6){ openModal(); }});
+  </script>
+</body>
+</html>
