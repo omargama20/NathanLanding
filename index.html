@@ -90,6 +90,44 @@
     .promo-fallback{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(6,10,18,.72);backdrop-filter:blur(6px)}
     .promo-fallback.open{display:flex}
     .pop-ribbon{display:inline-block;padding:.35rem .7rem;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--border);font-weight:600}
+    
+  /* ——— Mobile polish ——— */
+@media (max-width: 520px){
+  body{ padding-bottom: 86px; } /* evita que la barra fija tape contenido */
+  .hero{ padding: 64px 18px 36px; }
+  .cta-inner{ width: calc(100% - 20px); }
+  .cta-inner a{ flex:1; min-width:auto; }
+
+  /* Video short ocupa todo el ancho disponible */
+  .video-embed{ max-width: 100%; border-radius: 14px; }
+
+  /* Grid “Acerca de mí” a 1 columna y fotos más compactas */
+  .grid-images{ grid-template-columns: 1fr; gap: 14px; }
+  .grid-images img{ height: 220px; }
+
+  /* Pricing a 1 columna (ya lo hace, pero afinamos espaciados) */
+  .pricing-wrap{ gap: 18px; }
+  .offer{ padding: 22px; }
+  .price{ font-size: 1.9rem; }
+
+  /* Testimonios alineados y tamaño cómodo */
+  .testi-grid{ grid-template-columns: 1fr; gap: 18px; }
+  .testi-grid img{ height: 260px; max-width: 360px; margin: 0 auto; }
+
+  /* Popup: botones a ancho completo y separación táctil */
+  #promoModal .card .cta-btn,
+  #promoModal .card .btn-ghost,
+  .promo-fallback .card .cta-btn,
+  .promo-fallback .card .btn-ghost{
+    width: 100%; justify-content: center;
+    padding: 14px 18px; border-radius: 12px;
+  }
+
+  /* Startrader: da un poco más de alto en móvil si lo necesitas */
+  #open-account iframe{ height: 1100px !important; }
+}
+  
+    
   </style>
 </head>
 <body>
@@ -283,3 +321,4 @@
   </script>
 </body>
 </html>
+
