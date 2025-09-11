@@ -1,4 +1,4 @@
-​<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -21,7 +21,7 @@
     /* Hero */
     .hero{text-align:center;padding:86px 20px 48px}
     .hero h1{font-size:clamp(1.8rem,4.5vw,3.1rem)}
-    .hero h1 span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;color:transparent}
+    .hero h1 span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
     .hero p{color:var(--muted);margin:0 auto 14px;max-width:720px;font-size:1.05rem}
     .cta-btn{display:inline-block;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#03101c;padding:14px 28px;border-radius:14px;font-weight:700;text-decoration:none;box-shadow:var(--shadow);transition:transform .2s}
     .cta-btn:hover{transform:translateY(-2px)}
@@ -53,7 +53,8 @@
     .offer{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:28px;border-radius:18px;background:linear-gradient(180deg,#0f1629,#0b1326);border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 80px rgba(0,0,0,.5)}
     .offer .badge{display:inline-block;padding:.35rem .8rem;border-radius:999px;background:rgba(30,168,255,.12);border:1px solid rgba(255,255,255,.18);font-weight:600;margin-bottom:8px}
     .price{font-size:2.2rem;line-height:1.1;margin:6px 0 10px}
-    .price span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;color:transparent}
+    .price span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;animation:glow 2s ease-in-out infinite}
+    @keyframes glow{0%,100%{text-shadow:0 0 0 rgba(30,168,255,0)}50%{text-shadow:0 0 18px rgba(30,168,255,.55)}}
     .offer ul{list-style:none;padding:0;margin:10px 0 18px}
     .offer li{margin:6px 0;color:var(--text);opacity:.95}
     .offer .mini{color:var(--muted);font-size:.9rem}
@@ -74,11 +75,21 @@
     .cta-inner .whatsapp{background:#25D366;color:#04210f;border-radius:12px;padding:12px 18px}
     @media(max-width:520px){.cta-inner{width:calc(100% - 20px)}.cta-inner a{flex:1;min-width:auto}}
 
-    /* Popup */
+    /* Popup (dialog + fallback) */
+    #promoModal,.promo-fallback{z-index:99999}
     dialog::backdrop{background:rgba(6,10,18,.72);backdrop-filter:blur(6px)}
     #promoModal{border:none;padding:0;background:transparent}
-    #promoModal .card{background:linear-gradient(180deg,#0f1629,#0b1326);color:#fff;padding:22px;border-radius:20px;max-width:520px;width:min(92vw,520px);margin:auto;text-align:center;position:relative;border:1px solid rgba(255,255,255,.14)}
-    #promoModal .close-btn{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.08);border:1px solid var(--border);border-radius:50%;color:#fff;padding:6px 10px;cursor:pointer}
+    #promoModal .card,.promo-fallback .card{
+      background:linear-gradient(180deg,#0f1629,#0b1326);color:#fff;padding:22px;border-radius:20px;
+      max-width:520px;width:min(92vw,520px);margin:auto;text-align:center;position:relative;border:1px solid rgba(255,255,255,.14)
+    }
+    #promoModal .close-btn,.promo-fallback .close-btn{
+      position:absolute;top:12px;right:12px;background:rgba(255,255,255,.08);border:1px solid var(--border);
+      border-radius:50%;color:#fff;padding:6px 10px;cursor:pointer
+    }
+    .promo-fallback{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(6,10,18,.72);backdrop-filter:blur(6px)}
+    .promo-fallback.open{display:flex}
+    .pop-ribbon{display:inline-block;padding:.35rem .7rem;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--border);font-weight:600}
   </style>
 </head>
 <body>
@@ -146,7 +157,7 @@
             <li>Comienza a ganar desde hoy</li>
           </ul>
           <div class="mini">Precio normal: $150 USD</div>
-          <div class="cta-row" style="margin-top:12px">
+          <div class="offer cta-row" style="margin-top:12px">
             <a class="cta-btn" href="https://wa.me/5214793486266?text=Quiero%20aprovechar%20la%20promo%20de%2075%20USD%20de%20ComunidadFX" target="_blank" rel="noopener">Unirme ahora</a>
             <a class="btn-ghost" href="#open-account">Abrir cuenta</a>
           </div>
@@ -186,14 +197,12 @@
     </div>
   </div>
 
-  <!-- Pop-up $75 -->
+  <!-- Pop-up (dialog nativo) -->
   <dialog id="promoModal">
     <button class="close-btn" aria-label="Cerrar">✕</button>
     <div class="card">
-      <span style="display:inline-block;padding:.35rem .7rem;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);font-size:.9rem;margin-bottom:.6rem">🔥 Promoción activa</span>
-      <h3 style="margin:.2rem 0 .4rem">Acceso único por
-        <span style="background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;color:transparent">$75 USD</span>
-      </h3>
+      <span class="pop-ribbon">🔥 Promoción activa</span>
+      <h3 style="margin:.2rem 0 .4rem">Acceso único por <span class="price-glow">$75 USD</span></h3>
       <p style="margin:.25rem 0 1.1rem">Sin mensualidades • Acceso inmediato • Soporte</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
         <a class="cta-btn" id="popup-join" href="https://wa.me/5214793486266?text=Quiero%20aprovechar%20la%20promo%20de%2075%20USD%20de%20ComunidadFX" target="_blank" rel="noopener">Unirme ahora</a>
@@ -202,56 +211,75 @@
     </div>
   </dialog>
 
+  <!-- Pop-up (fallback universal) -->
+  <div id="promoFallback" class="promo-fallback" aria-hidden="true">
+    <div class="card">
+      <button class="close-btn" aria-label="Cerrar">✕</button>
+      <span class="pop-ribbon">🔥 Promoción activa</span>
+      <h3 style="margin:.2rem 0 .4rem">Acceso único por <span class="price-glow">$75 USD</span></h3>
+      <p style="margin:.25rem 0 1.1rem">Sin mensualidades • Acceso inmediato • Soporte</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+        <a class="cta-btn" id="popup-join-fb" href="https://wa.me/5214793486266?text=Quiero%20aprovechar%20la%20promo%20de%2075%20USD%20de%20ComunidadFX" target="_blank" rel="noopener">Unirme ahora</a>
+        <a class="btn-ghost" id="popup-open-fb" href="https://www.startrader.com/es/live-account/?affid=7454685" target="_blank" rel="noopener">Abrir cuenta</a>
+      </div>
+    </div>
+  </div>
+
   <script>
-    // --- Lógica pop-up: aparece al pasar por la sección de precio y seguir scrolleando sin dar clic ---
-    const MODAL_KEY = 'promoSeen_v5';
-    const promo = document.getElementById('promoModal');
-    const pricing = document.getElementById('pricing');
-    const closeBtn = promo.querySelector('.close-btn');
+    // POPUP robusto: <dialog> + fallback, disparo al pasar pricing, 12s y 70% scroll
+    (function(){
+      const KEY='promoSeen_v10';
+      const hasDialog = typeof HTMLDialogElement !== 'undefined';
+      const modal = document.getElementById('promoModal');
+      const fb = document.getElementById('promoFallback');
+      const pricing = document.getElementById('pricing');
 
-    let userInteracted = false;
-    function markInteracted(){ userInteracted = true; }
+      function openPopup(){
+        if(sessionStorage.getItem(KEY)) return;
+        if(hasDialog && modal?.showModal) modal.showModal();
+        else fb?.classList.add('open');
+        sessionStorage.setItem(KEY,'1');
+      }
+      function closePopup(){
+        try{ modal?.close(); }catch(e){}
+        fb?.classList.remove('open');
+      }
 
-    // Cierre del pop-up al hacer clic en cualquiera de los CTAs del pop
-    document.getElementById('popup-join').addEventListener('click', ()=>{ promo.close(); markInteracted(); });
-    document.getElementById('popup-open').addEventListener('click', ()=>{ promo.close(); markInteracted(); });
-    closeBtn.addEventListener('click', ()=> promo.close());
-    promo.addEventListener('click',(e)=>{ if(e.target===promo){ promo.close(); }});
+      // Cierre por botones y click fuera
+      document.getElementById('popup-join')?.addEventListener('click', closePopup);
+      document.getElementById('popup-open')?.addEventListener('click', closePopup);
+      document.getElementById('popup-join-fb')?.addEventListener('click', closePopup);
+      document.getElementById('popup-open-fb')?.addEventListener('click', closePopup);
+      modal?.querySelector('.close-btn')?.addEventListener('click', closePopup);
+      fb?.querySelector('.close-btn')?.addEventListener('click', closePopup);
+      modal?.addEventListener('click', (e)=>{ if(e.target===modal) closePopup(); });
+      fb?.addEventListener('click', (e)=>{ if(e.target===fb) closePopup(); });
 
-    // Si hacen clic en cualquier CTA global, marcamos interacción
-    document.addEventListener('click',(e)=>{
-      const t = e.target.closest('.cta-btn, .btn-ghost');
-      if(t) markInteracted();
-    });
+      // Disparo: si ve #pricing y lo deja atrás sin convertir
+      if('IntersectionObserver' in window && pricing){
+        let saw = false;
+        const io = new IntersectionObserver((entries)=>{
+          entries.forEach(entry=>{
+            if(entry.isIntersecting && entry.intersectionRatio>=0.6){ saw = true; }
+            else if(saw && entry.boundingClientRect.top < 0){ openPopup(); }
+          });
+        }, {threshold:[0,0.6,1]});
+        io.observe(pricing);
+      }
 
-    let pricingSeen = false;
-    if('IntersectionObserver' in window && pricing){
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
-          if(entry.isIntersecting && entry.intersectionRatio >= 0.6){
-            pricingSeen = true; // vio la oferta
-          } else if(pricingSeen && entry.boundingClientRect.top < 0){
-            // ya pasó la oferta hacia abajo
-            maybeShowModal();
-          }
-        });
-      }, {threshold:[0,0.6,1]});
-      io.observe(pricing);
-    }
+      // Failsafes
+      setTimeout(openPopup, 12000);
+      window.addEventListener('scroll', ()=>{
+        const h = document.documentElement;
+        const p = h.scrollTop / (h.scrollHeight - h.clientHeight);
+        if(p > 0.7) openPopup();
+      });
 
-    function maybeShowModal(){
-      if(userInteracted) return;
-      if(sessionStorage.getItem(MODAL_KEY)) return;
-      promo.showModal();
-      sessionStorage.setItem(MODAL_KEY,'1');
-    }
-
-    // Failsafe: si baja 70% de la página sin interactuar, mostrar
-    window.addEventListener('scroll', ()=>{
-      const h=document.documentElement;
-      const p=h.scrollTop/(h.scrollHeight-h.clientHeight);
-      if(p>0.7) maybeShowModal();
-    });
+      // Forzar prueba: ?debugPopup=1
+      if(new URLSearchParams(location.search).get('debugPopup')==='1'){
+        sessionStorage.removeItem(KEY); openPopup();
+      }
+    })();
   </script>
 </body>
 </html>
