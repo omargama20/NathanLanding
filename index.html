@@ -101,9 +101,27 @@
   /* Video short ocupa todo el ancho disponible */
   .video-embed{ max-width: 100%; border-radius: 14px; }
 
-  /* Grid “Acerca de mí” a 1 columna y fotos más compactas */
-  .grid-images{ grid-template-columns: 1fr; gap: 14px; }
-  .grid-images img{ height: 220px; }
+  /* Imágenes de "Acerca de mí" alineadas y elegantes */
+.grid-images{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:14px;
+}
+.grid-images img{
+  width:100%;
+  aspect-ratio: 1 / 1; /* hace todas las imágenes cuadradas y consistentes */
+  object-fit:cover;
+  border-radius:14px;
+  box-shadow:0 4px 16px rgba(0,0,0,.35);
+  transition:transform .25s ease;
+}
+.grid-images img:hover{
+  transform:scale(1.03);
+}
+@media(max-width:520px){
+  .grid-images{ grid-template-columns:1fr 1fr; }
+}
+
 
   /* Pricing a 1 columna (ya lo hace, pero afinamos espaciados) */
   .pricing-wrap{ gap: 18px; }
@@ -321,4 +339,3 @@
   </script>
 </body>
 </html>
-
